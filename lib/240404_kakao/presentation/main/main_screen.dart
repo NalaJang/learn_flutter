@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learn_fluuter_together/240404_kakao/data/mock_data.dart';
+import 'package:learn_fluuter_together/240404_kakao/data/model/home_menu_model.dart';
 import 'package:learn_fluuter_together/240404_kakao/presentation/collections/collections.dart';
 import 'package:learn_fluuter_together/240404_kakao/presentation/home/home_screen.dart';
 import 'package:learn_fluuter_together/240404_kakao/presentation/my_subscribe/my_subscribe_screen.dart';
@@ -18,7 +20,12 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> tabs = [
-      const HomeScreen(),
+      HomeScreen(
+        homeMenus:
+            MockData.homeMenus.map((e) => HomeMenuModel(name: e)).toList(),
+        videos: MockData.videos,
+        shorts: MockData.shorts,
+      ),
       const ShortsScreen(),
       const UploadScreen(),
       const MySubscribeScreen(),
@@ -33,13 +40,36 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         currentIndex: _selectedIndex,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home)),
-          BottomNavigationBarItem(icon: Icon(Icons.offline_bolt_outlined)),
-          BottomNavigationBarItem(icon: Icon(Icons.add_circle_outline)),
-          BottomNavigationBarItem(icon: Icon(Icons.subscriptions_outlined)),
-          BottomNavigationBarItem(icon: Icon(Icons.video_library)),
+        type: BottomNavigationBarType.fixed,
+        items: [
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.offline_bolt_outlined), label: 'shorts'),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline), label: '새 게시물'),
+          BottomNavigationBarItem(
+            icon: Stack(
+              children: [
+                const Icon(Icons.subscriptions_outlined),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            label: '구독',
+          ),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.video_library), label: '보관함'),
         ],
+        selectedItemColor: Colors.white,
       ),
     );
   }
