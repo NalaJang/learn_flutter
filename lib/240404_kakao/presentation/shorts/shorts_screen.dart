@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ShortTab extends StatelessWidget {
-  const ShortTab({super.key});
+class ShortScreen extends StatelessWidget {
+  const ShortScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

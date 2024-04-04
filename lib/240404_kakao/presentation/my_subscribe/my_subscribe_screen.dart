@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MySubscribeTab extends StatelessWidget {
-  const MySubscribeTab({super.key});
+class MySubscribeScreen extends StatelessWidget {
+  const MySubscribeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
