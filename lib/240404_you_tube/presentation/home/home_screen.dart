@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/home_menu_model.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/shorts_model.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/video_model.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/main/components/home_menu_widget.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/main/components/shorts_widget.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/main/components/video_list_widget.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/home_menu_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/shorts_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/video_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/main/components/home_menu_widget.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/main/components/shorts_widget.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/main/components/video_list_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<HomeMenuModel> homeMenus;

@@ -1,4 +1,5 @@
-import 'package:learn_fluuter_together/240404_kakao/data/model/video_model.dart';
+
+import 'package:learn_fluuter_together/240404_you_tube/data/model/video_model.dart';
 
 import 'model/shorts_model.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/main/main_screen.dart';
+
+import 'presentation/main/main_screen.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/mock_data.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/home_menu_model.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/collections/collections.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/home/home_screen.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/my_subscribe/my_subscribe_screen.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/my_upload/upload_screen.dart';
-import 'package:learn_fluuter_together/240404_kakao/presentation/shorts/shorts_screen.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/mock_data.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/home_menu_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/collections/collections.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/home/home_screen.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/my_subscribe/my_subscribe_screen.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/my_upload/upload_screen.dart';
+import 'package:learn_fluuter_together/240404_you_tube/presentation/shorts/shorts_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

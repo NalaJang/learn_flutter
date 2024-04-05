@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/home_menu_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/home_menu_model.dart';
 
 class HomeMenuWidget extends StatelessWidget {
   final HomeMenuModel homeMenu;

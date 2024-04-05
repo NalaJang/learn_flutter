@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/shorts_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/shorts_model.dart';
 
 class ShortsWidget extends StatelessWidget {
   final ShortsModel shorts;

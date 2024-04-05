@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:learn_fluuter_together/240404_kakao/data/model/video_model.dart';
+import 'package:learn_fluuter_together/240404_you_tube/data/model/video_model.dart';
 
 class VideoListWidget extends StatelessWidget {
   final VideoModel videoModel;
