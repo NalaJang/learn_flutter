@@ -18,8 +18,8 @@ class EFrequency extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          top: 10,
+        const Positioned(
+          top: 20,
           left: 20,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,12 +35,12 @@ class EFrequency extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
+        const Positioned(
           bottom: 20,
+          left: 10,
+          right: 60,
           child: Text(
             Texts.starBucksEventDescription,
-            overflow: TextOverflow.clip,
-            maxLines: 2,
           ),
         ),
       ],
