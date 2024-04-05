@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:learn_fluuter_together/constants/texts.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../data/model/whats_new_model.dart';
 import 'components/e_frequency.dart';
@@ -30,18 +28,9 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     EFrequency(),
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,),
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                              'assets/images/star_bucks/img_starbucks_2.png'),
-                        ],
-                      ),
-                    ),
+                    _midImage(),
                     _whatsNew(),
-                    Image.asset('assets/images/star_bucks/img_starbucks_2.png'),
+                    _bottomImage(),
                   ],
                 ),
               ),
@@ -61,11 +50,11 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             children: whatsNews
                 .map((e) => WhatsNewWidget(
-                whatsNew: WhatsNewModel(
-                  image: e.image,
-                  title: e.title,
-                  subtitle: e.subtitle,
-                )))
+                        whatsNew: WhatsNewModel(
+                      image: e.image,
+                      title: e.title,
+                      subtitle: e.subtitle,
+                    )))
                 .toList(),
           ),
         ),
@@ -96,5 +85,16 @@ class HomeScreen extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Widget _midImage() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, bottom: 10,),
+      child: Image.asset('assets/images/star_bucks/img_starbucks_2.png'),
+    );
+  }
+
+  Widget _bottomImage() {
+    return Image.asset('assets/images/star_bucks/img_starbucks_2.png');
   }
 }
