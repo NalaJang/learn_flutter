@@ -5,12 +5,15 @@ class MyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      expandedHeight: 200.0,
+    return const SliverAppBar(
+      toolbarHeight: 40,
+      pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         expandedTitleScale: 1,
         titlePadding: EdgeInsetsDirectional.only(
-          start: 20, end: 20, bottom: 10
+          start: 20,
+          end: 20,
+          bottom: 10,
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,7 +32,7 @@ class MyAppBar extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: 20,),
+                SizedBox(width: 20),
                 Row(
                   children: [
                     Icon(Icons.airplane_ticket_outlined),
@@ -44,7 +47,6 @@ class MyAppBar extends StatelessWidget {
                 ),
               ],
             ),
-            // Spacer(),
             SizedBox(),
             Row(
               children: [
@@ -53,20 +55,7 @@ class MyAppBar extends StatelessWidget {
             ),
           ],
         ),
-        // Text(
-        //   '달콤한 스타벅스 디저트와 \n 봄날의 오후를 함께해요!',
-        //   style: TextStyle(
-        //     fontSize: 17.0,
-        //     color: Colors.black,
-        //   ),
-        // ),
-        background: Image.network(
-          'https://via.placeholder.com/150',
-          fit: BoxFit.cover,
-        ),
       ),
-      actions: <Widget>[],
-      floating: true,
     );
   }
 }

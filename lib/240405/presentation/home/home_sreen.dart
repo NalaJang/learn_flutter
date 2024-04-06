@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../data/model/whats_new_model.dart';
 import 'components/e_frequency.dart';
@@ -20,6 +21,25 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
+          SliverToBoxAdapter(
+            child: Stack(
+              children: [
+                const Positioned(
+                  left: 20.0,
+                  bottom: 0,
+                  child: Text(
+                    '달콤한 스타벅스 디저트와 \n봄날의 오후를 함께해요!',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Lottie.asset('assets/images/star_bucks/cherry_blossom.json'),
+              ],
+            ),
+          ),
           MyAppBar(),
           SliverList(
             delegate: SliverChildListDelegate([
@@ -89,7 +109,10 @@ class HomeScreen extends StatelessWidget {
 
   Widget _midImage() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 10,),
+      padding: const EdgeInsets.only(
+        top: 20,
+        bottom: 10,
+      ),
       child: Image.asset('assets/images/star_bucks/img_starbucks_2.png'),
     );
   }
