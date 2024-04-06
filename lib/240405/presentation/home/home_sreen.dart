@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../data/model/whats_new_model.dart';
 import 'components/e_frequency.dart';
+import 'components/headerWidget.dart';
 import 'components/my_app_bar.dart';
 import 'components/whats_new_widget.dart';
 
@@ -21,25 +21,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Stack(
-              children: [
-                const Positioned(
-                  left: 20.0,
-                  bottom: 0,
-                  child: Text(
-                    '달콤한 스타벅스 디저트와 \n봄날의 오후를 함께해요!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Lottie.asset('assets/images/star_bucks/cherry_blossom.json'),
-              ],
-            ),
-          ),
+          HeaderWidget(),
           MyAppBar(),
           SliverList(
             delegate: SliverChildListDelegate([
