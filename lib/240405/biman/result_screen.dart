@@ -10,8 +10,36 @@ class ResultScreen extends StatelessWidget {
     required this.weight,
   });
 
+  String _calcBmi(double bmi) {
+    String result= '저체중';
+    if( bmi >= 35) {
+      result = '고도 비만';
+    } else if( bmi >= 30) {
+      result = '2단계 비만';
+    } else if( bmi >= 25) {
+      result = '1단계 비만';
+    } else if( bmi >= 23) {
+      result = '과체중';
+    } else if( bmi >= 18.5) {
+      result = '정상';
+    }
+    return result;
+  }
+
+  IconData _buildIcon(double bmi) {
+    IconData icon = Icons.sentiment_dissatisfied;
+    if( bmi >= 23) {
+      icon = Icons.sentiment_very_dissatisfied;
+    } else if( bmi >= 18.5) {
+      icon = Icons.sentiment_satisfied;
+    }
+    return icon;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final bmi = weight / ((height / 100) * (height / 100));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('결과'),
@@ -21,13 +49,13 @@ class ResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '정상',
+              _calcBmi(bmi),
               style: TextStyle(
                 fontSize: 36,
               ),
             ),
             Icon(
-              Icons.sentiment_satisfied,
+              _buildIcon(bmi),
               color: Colors.green,
               size: 100,
             ),
