@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'biman/biman_main_screen.dart';
 import 'starbuks/presentation/main/main_screen.dart';
 
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MainScreen(),
+      home: BimanMainScreen(),
     );
   }
 }
