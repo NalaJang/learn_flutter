@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_fluuter_together/240405/biman/result_screen.dart';
 
 class BimanMainScreen extends StatefulWidget {
   const BimanMainScreen({super.key});
@@ -55,9 +56,17 @@ class _BimanMainScreenState extends State<BimanMainScreen> {
               ElevatedButton(
                 onPressed: () {
                   // null 이 아닐 때는 validate(확인)을 하고, null 이면 false
-                  if(_formKey.currentState?.validate() ?? false) {
-
+                  if (_formKey.currentState?.validate() ?? false) {
+                    return;
                   }
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ResultScreen(height: 0.0, weight: 0.0),
+                    ),
+                  );
                 },
                 child: Text('결과'),
               )
