@@ -92,7 +92,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             width: 100,
             height: 200,
             child: ListView(
-              children: _lapTimes
+              children: _lapTimes.reversed
                   .map(
                     (time) => Center(child: Text(time)),
                   )
