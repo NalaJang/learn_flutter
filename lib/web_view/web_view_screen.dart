@@ -30,7 +30,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
       ..setNavigationDelegate(NavigationDelegate(
         onNavigationRequest: (request) {
           // 유튜브 링크로 들어가는 것을 막는다.
-          if( request.url.startsWith('https://www.youtube.com/')) {
+          if (request.url.startsWith('https://www.youtube.com/')) {
             return NavigationDecision.prevent;
           }
           // 그 외에는 이동을 허용
@@ -49,7 +49,33 @@ class _WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('나만의 웹 브라우저'),
+        title: const Text('나만의 웹 브라우저'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          ),
+          // 어떤 값(여기선 String)을 표시할 건지 타입 지정
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              print(value);
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem<String>(
+                value: 'https//www.google.com',
+                child: Text('구글'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'https//www.naver.com',
+                child: Text('네이버'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'https://www.youtube.com/',
+                child: Text('유튜브'),
+              ),
+            ],
+          ),
+        ],
       ),
       body: WebViewWidget(
         controller: controller,
