@@ -16,7 +16,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   int _time = 0;
   bool _isRunning = false;
 
-  List<String> _lapTimes = [];
+  final List<String> _lapTimes = [];
 
   void _clickButton() {
     _isRunning = !_isRunning;
@@ -29,7 +29,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   }
 
   void _start() {
-    _timer = Timer.periodic(Duration(milliseconds: 10), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
         _time++;
       });
@@ -50,7 +50,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   }
 
   void _recordLapTime(String time) {
-    _lapTimes.insert(0, '${_lapTimes.length + 1} $_time');
+    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $time');
   }
 
   @override
@@ -72,7 +72,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 30.0,
           ),
           Row(
@@ -81,7 +81,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
             children: [
               Text(
                 '$sec',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 50,
                 ),
               ),
@@ -90,16 +90,16 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
           ),
           SizedBox(
             width: 100,
-            height: 100,
+            height: 200,
             child: ListView(
-              children: [
-                Center(
-                  child: Text(''),
-                )
-              ],
+              children: _lapTimes
+                  .map(
+                    (time) => Center(child: Text(time)),
+                  )
+                  .toList(),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -131,7 +131,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
               ),
             ],
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
         ],
       ),
     );
