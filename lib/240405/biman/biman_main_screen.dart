@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_fluuter_together/240405/biman/result_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BimanMainScreen extends StatefulWidget {
   const BimanMainScreen({super.key});
@@ -15,10 +16,17 @@ class _BimanMainScreenState extends State<BimanMainScreen> {
   final _weightController = TextEditingController();
 
   @override
-  void dispose() {
+  void dispose() async {
     _heightController.dispose();
     _weightController.dispose();
+    // 여기에 save(); 를 작성하게 되면 저장이 안되는 경우가 생길 수 있기 때문에 다른 곳에 작성.
     super.dispose();
+  }
+
+  Future save() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('height', double.parse(_heightController.text));
+    await prefs.setDouble('weight', double.parse(_weightController.text));
   }
 
   @override
@@ -70,6 +78,8 @@ class _BimanMainScreenState extends State<BimanMainScreen> {
                   if (_formKey.currentState?.validate() == false) {
                     return;
                   }
+
+                  save();
 
                   final height = double.parse(_heightController.text);
                   final weight =double.parse(_weightController.text);
