@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240405/data/model/whats_new_model.dart';
+
+import '../../../data/model/whats_new_model.dart';
 
 class WhatsNewWidget extends StatelessWidget {
   final WhatsNewModel whatsNew;

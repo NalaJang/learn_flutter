@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240405/data/mock_data.dart';
-import 'package:learn_fluuter_together/240405/presentation/home/home_sreen.dart';
-import 'package:learn_fluuter_together/240405/presentation/order/order_screen.dart';
-import 'package:learn_fluuter_together/240405/presentation/other/other_screen.dart';
-import 'package:learn_fluuter_together/240405/presentation/pay/pay_screen.dart';
-import 'package:learn_fluuter_together/240405/presentation/shop/shop_screen.dart';
+
+import '../../data/mock_data.dart';
+import '../home/home_sreen.dart';
+import '../order/order_screen.dart';
+import '../other/other_screen.dart';
+import '../pay/pay_screen.dart';
+import '../shop/shop_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

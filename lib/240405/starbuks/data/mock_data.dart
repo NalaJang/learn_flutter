@@ -1,4 +1,5 @@
-import 'package:learn_fluuter_together/240405/data/model/whats_new_model.dart';
+
+import 'model/whats_new_model.dart';
 
 class ModeData {
   static const List<WhatsNewModel> whatsNew = [
