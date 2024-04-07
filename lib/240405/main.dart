@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '240403_layout/birthday_card.dart';
-import 'stop_watch/stop_watch_screen.dart';
-import 'web_view/web_view_screen.dart';
+import 'biman/biman_main_screen.dart';
+import 'starbuks/presentation/main/main_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: WebViewScreen(),
+      home: BimanMainScreen(),
     );
   }
 }
