@@ -58,15 +58,15 @@ class _WebViewScreenState extends State<WebViewScreen> {
           // 어떤 값(여기선 String)을 표시할 건지 타입 지정
           PopupMenuButton<String>(
             onSelected: (value) {
-              print(value);
+              controller.loadRequest(Uri.parse(value));
             },
             itemBuilder: (context) => [
               const PopupMenuItem<String>(
-                value: 'https//www.google.com',
+                value: 'https://www.google.com/',
                 child: Text('구글'),
               ),
               const PopupMenuItem<String>(
-                value: 'https//www.naver.com',
+                value: 'https://www.naver.com/',
                 child: Text('네이버'),
               ),
               const PopupMenuItem<String>(
