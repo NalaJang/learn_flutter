@@ -24,6 +24,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
     super.initState();
 
     controller = WebViewController()
+      // 웹 사이트는 자바 스크립트를 많이 사용하기 때문에 이 옵션을 꼭 넣어준다.
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(
         Uri.parse('https://flutter.dev'),
       )
@@ -72,6 +74,10 @@ class _WebViewScreenState extends State<WebViewScreen> {
               const PopupMenuItem<String>(
                 value: 'https://www.naver.com/',
                 child: Text('네이버'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'https://www.kakaocorp.com/page/',
+                child: Text('카카오'),
               ),
               const PopupMenuItem<String>(
                 value: 'https://www.youtube.com/',
