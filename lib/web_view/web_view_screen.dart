@@ -62,6 +62,10 @@ class _WebViewScreenState extends State<WebViewScreen> {
             },
             itemBuilder: (context) => [
               const PopupMenuItem<String>(
+                value: 'https://flutter.dev',
+                child: Text('플러터'),
+              ),
+              const PopupMenuItem<String>(
                 value: 'https://www.google.com/',
                 child: Text('구글'),
               ),
