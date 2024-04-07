@@ -1,13 +1,6 @@
-import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
-// Import for Android features.
-import 'package:webview_flutter_android/webview_flutter_android.dart';
-
-// Import for iOS features.
-import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class WebViewScreen extends StatefulWidget {
   const WebViewScreen({super.key});
@@ -38,9 +31,11 @@ class _WebViewScreenState extends State<WebViewScreen> {
           // 그 외에는 이동을 허용
           return NavigationDecision.navigate;
         },
+        // 이동한 url 트레킹
         onUrlChange: (UrlChange change) {
           debugPrint('url change to ${change.url}');
         },
+        // 종료된 url 트레킹
         onPageFinished: (String url) {
           debugPrint('page finished loading url: $url');
         },
@@ -52,6 +47,14 @@ class _WebViewScreenState extends State<WebViewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('나만의 웹 브라우저'),
+        leading: IconButton(
+          icon: const Icon(CupertinoIcons.back),
+          onPressed: () async {
+            if (await controller.canGoBack()) {
+              await controller.goBack();
+            }
+          },
+        ),
         actions: [
           IconButton(
             onPressed: () {},
