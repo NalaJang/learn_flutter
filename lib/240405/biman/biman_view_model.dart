@@ -15,8 +15,17 @@ class BimanViewModel with ChangeNotifier {
 
   IconData get icon => _icon;
 
+  @override
+  void dispose() {
+    // TextEditingController 해제
+    _heightController.dispose();
+    _weightController.dispose();
+    super.dispose();
+  }
+
   void load() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs =
+        await SharedPreferences.getInstance(); //=> data source 로 가면 됨.
     // getDouble 은 Future 가 아님.
     final double? height = prefs.getDouble('height');
     final double? weight = prefs.getDouble('weight');
@@ -27,6 +36,12 @@ class BimanViewModel with ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  void showResult() {
+    save();
+    bmiGrade();
+    buildIcon();
   }
 
   void save() async {

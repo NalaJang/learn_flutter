@@ -97,10 +97,13 @@ class _BimanMainScreenState extends State<BimanMainScreen> {
         if (_formKey.currentState?.validate() == false) {
           return;
         }
+        // viewModel 에서 아래 세 개의 메서드를 처리하고, 추상화한 메서드를 불러오는. => 캡슐화!
+        // '결과'에 대한 결과만 호출하면 됨.
+        // viewModel.save();
+        // viewModel.bmiGrade();
+        // viewModel.buildIcon();
 
-        viewModel.save();
-        viewModel.bmiGrade();
-        viewModel.buildIcon();
+        viewModel.showResult();
       },
       child: const Text('결과'),
     );
