@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class MyGalleryApp extends StatefulWidget {
 class _MyGalleryAppState extends State<MyGalleryApp> {
   final ImagePicker _picker = ImagePicker();
   List<XFile>? images;
+  int currentPage = 0;
+  final pageController = PageController();
 
   @override
   void initState() {
@@ -30,6 +33,7 @@ class _MyGalleryAppState extends State<MyGalleryApp> {
       body: images == null
           ? const Center(child: Text('no data'))
           : PageView(
+              controller: pageController,
               children: images!.map((image) {
                 return FutureBuilder<Uint8List>(
                   future: image.readAsBytes(),
@@ -55,6 +59,23 @@ class _MyGalleryAppState extends State<MyGalleryApp> {
 
   Future<void> loadImages() async {
     images = await _picker.pickMultiImage();
+
+    if (images != null) {
+      Timer.periodic(const Duration(seconds: 5), (timer) {
+        // 현재 페이지를 기억하고 시간이 되면 다음 페이지로 넘어가도록 구현
+        currentPage++;
+
+        // 끝까지 이동하면 다시 첫 페이지로 이동
+        if (currentPage > images!.length - 1) {
+          currentPage = 0;
+        }
+        pageController.animateToPage(
+          currentPage,
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.easeIn,
+        );
+      });
+    }
     setState(() {});
   }
 }
