@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 class Sensor extends StatelessWidget {
@@ -7,6 +8,12 @@ class Sensor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 가로 모드 고정
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+
     // 위치할 이미지의 절반 값을 빼줘야(여기서는 50) 정확히 중앙 값을 얻을 수있다.
     final centerX = MediaQuery.of(context).size.width / 2 - 50;
     final centerY = MediaQuery.of(context).size.height / 2 - 50;
