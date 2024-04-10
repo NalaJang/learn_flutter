@@ -22,32 +22,37 @@ class Sensor extends StatelessWidget {
       body: Stack(
         children: [
           StreamBuilder<AccelerometerEvent>(
-            stream: accelerometerEvents,
-            builder: (context, snapshot) {
-              if( !snapshot.hasData ) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+              stream: accelerometerEventStream(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
 
-              final event = snapshot.data!;
-              // x, y, z 에 대한 의미는 문서 확인
-              List<double> accelerometerValues = [event.x, event.y, event.z];
+                final event = snapshot.data!;
+                // x, y, z 에 대한 의미는 문서 확인
+                // List<double> accelerometerValues = [event.x, event.y, event.z];
+                // print(accelerometerValues);
 
-              return Positioned(
-                left: centerX,
-                top: centerY,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green,
-                  ),
-                  width: 100,
-                  height: 100,
-                ),
-              );
-            }
-          )
+                return Positioned(
+                    left: centerX + event.x * 20,
+                    top: centerY + event.x * 20,
+                    child:
+                        // Container(
+                        //   decoration: const BoxDecoration(
+                        //     shape: BoxShape.circle,
+                        //     color: Colors.green,
+                        //   ),
+                        //   width: 100,
+                        //   height: 100,
+                        // ),
+                        Image.asset(
+                      'assets/images/img_ski.png',
+                      width: 100,
+                      height: 100,
+                    ));
+              })
         ],
       ),
     );
