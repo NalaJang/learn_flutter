@@ -4,9 +4,24 @@ import 'package:learn_fluuter_together/240411/presentation/components/image_card
 import 'package:learn_fluuter_together/240411/presentation/search_list_view_model.dart';
 import 'package:provider/provider.dart';
 
-class SearchListScreen extends StatelessWidget {
-  SearchListScreen({super.key});
+class SearchListScreen extends StatefulWidget {
+  const SearchListScreen({super.key});
 
+  @override
+  State<SearchListScreen> createState() => _SearchListScreenState();
+}
+
+class _SearchListScreenState extends State<SearchListScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      final viewModel = context.read<SearchListViewModel>();
+      viewModel.getPhotos('apple');
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<SearchListViewModel>();
