@@ -45,6 +45,7 @@ dependencies:
   json_annotation: ^4.8.1
   provider: ^6.1.2
   http: ^1.2.1
+  soundpool: ^2.4.1
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/star_bucks/
+    - assets/xylophone_sounds/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
