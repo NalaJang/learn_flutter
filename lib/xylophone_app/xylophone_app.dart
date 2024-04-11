@@ -11,11 +11,20 @@ class XylophoneApp extends StatefulWidget {
 
 class _XylophoneAppState extends State<XylophoneApp> {
   static Soundpool pool =
-  Soundpool.fromOptions(options: SoundpoolOptions.kDefault);
+      Soundpool.fromOptions(options: SoundpoolOptions.kDefault);
   bool _isLoading = true;
   final List<int> _soundIds = [];
   List<double> heightPaddings = [10, 20, 32, 40, 46, 54, 60, 69];
-  List<String> soundFileNames = ['do1', 're', 'mi', 'fa', 'sol', 'la', 'si', 'do2'];
+  List<String> soundFileNames = [
+    'do1',
+    're',
+    'mi',
+    'fa',
+    'sol',
+    'la',
+    'si',
+    'do2'
+  ];
   List<String> syllableNames = ['도', '레', '미', '파', '솔', '라', '시', '도'];
   List<Color> colors = [
     Colors.red,
@@ -52,15 +61,15 @@ class _XylophoneAppState extends State<XylophoneApp> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          for (int i = 0; i < syllableNames.length; i++)
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: heightPaddings[i]),
-              child: gunban(syllableNames[i], colors[i], _soundIds[i]),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                for (int i = 0; i < syllableNames.length; i++)
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: heightPaddings[i]),
+                    child: gunban(syllableNames[i], colors[i], _soundIds[i]),
+                  ),
+              ],
             ),
-        ],
-      ),
     );
   }
 
