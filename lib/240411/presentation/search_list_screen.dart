@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_fluuter_together/240411/presentation/components/image_card_widget.dart';
 import 'package:learn_fluuter_together/240411/presentation/search_list_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -31,15 +32,16 @@ class SearchListScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
             Expanded(
               child: viewModel.isLoading
-                  ? const CircularProgressIndicator()
+                  ? const Center(child: CircularProgressIndicator())
                   : GridView.count(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                       children: viewModel.photos
-                          .map((e) => Image.network(e.url))
+                          .map((e) => ImageCardWidget(photo: e))
                           .toList()),
             ),
           ],

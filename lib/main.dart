@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_fluuter_together/240411/data/data_source/photo_data_source.dart';
 import 'package:learn_fluuter_together/240411/data/repository/photo_repo_impl.dart';
-import 'package:learn_fluuter_together/240411/presentation/components/search_list_screen.dart';
+import 'package:learn_fluuter_together/240411/presentation/search_list_screen.dart';
 import 'package:learn_fluuter_together/240411/presentation/search_list_view_model.dart';
 import 'package:provider/provider.dart';
 
