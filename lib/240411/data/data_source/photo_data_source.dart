@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:learn_fluuter_together/240411/dto/photo_data_dto.dart';
+import 'package:learn_fluuter_together/240411/data/dto/photo_data_dto.dart';
 
 class PhotoDataSource {
   final String _baseUrl = 'https://pixabay.com/api';
