@@ -27,25 +27,25 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ChangeNotifierProvider<T extends ChangeNotifier> extends InheritedWidget {
+class ChangeNotifierProviderEx<T extends ChangeNotifier> extends InheritedWidget {
   final T value;
 
-  const ChangeNotifierProvider({
+  const ChangeNotifierProviderEx({
     super.key,
     required super.child,
     required this.value,
   });
 
-  static ChangeNotifierProvider<T> of<T extends ChangeNotifier>(
+  static ChangeNotifierProviderEx<T> of<T extends ChangeNotifier>(
       BuildContext context) {
     // dependOnInheritedWidgetOfExactType : 위젯 트리에서 가장 가까운 타입을 찾는 메서드
     return context
-        .dependOnInheritedWidgetOfExactType<ChangeNotifierProvider<T>>()!;
+        .dependOnInheritedWidgetOfExactType<ChangeNotifierProviderEx<T>>()!;
   }
 
   // 수정이 되었는 지 알려주는 규칙을 정의하는 메서드 => 무분별한 재빌드를 컨트롤할 수 있다.
   @override
-  bool updateShouldNotify(ChangeNotifierProvider oldWidget) {
+  bool updateShouldNotify(ChangeNotifierProviderEx oldWidget) {
     return value != oldWidget.value;
   }
 }
@@ -71,7 +71,7 @@ class MyViewModelTest extends StatefulWidget {
 class _MyViewModelTestState extends State<MyViewModelTest> {
   @override
   Widget build(BuildContext context) {
-    final viewModel = ChangeNotifierProvider.of<MyViewModel>(context).value;
+    final viewModel = ChangeNotifierProviderEx.of<MyViewModel>(context).value;
 
     return Scaffold(
       appBar: AppBar(
@@ -114,7 +114,7 @@ class NextScreen extends StatefulWidget {
 class _NextScreenState extends State<NextScreen> {
   @override
   Widget build(BuildContext context) {
-    final viewModel = ChangeNotifierProvider.of<MyViewModel>(context).value;
+    final viewModel = ChangeNotifierProviderEx.of<MyViewModel>(context).value;
 
     return Scaffold(
       appBar: AppBar(
