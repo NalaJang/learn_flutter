@@ -49,13 +49,13 @@ class _SearchListScreenState extends State<SearchListScreen> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: viewModel.isLoading
+              child: viewModel.state.isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : GridView.count(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      children: viewModel.photos
+                      children: viewModel.state.photos
                           .map((e) => ImageCardWidget(photo: e))
                           .toList()),
             ),

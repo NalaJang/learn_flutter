@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:learn_fluuter_together/240411/data/model/photo.dart';
 import 'package:learn_fluuter_together/240411/data/repository/photo_repository.dart';
+import 'package:learn_fluuter_together/240411/presentation/search_list_state.dart';
 
 class SearchListViewModel with ChangeNotifier {
-  bool _isLoading = false;
-  List<Photo> _photos = [];
   final PhotoRepository _repository;
   final _textController = TextEditingController();
 
@@ -12,11 +11,11 @@ class SearchListViewModel with ChangeNotifier {
     required PhotoRepository repository,
   }) : _repository = repository;
 
-  List<Photo> get photos => List.unmodifiable(_photos);
-
-  bool get isLoading => _isLoading;
-
   get textController => _textController;
+
+  SearchListState _state = const SearchListState();
+
+  SearchListState get state => _state;
 
   @override
   void dispose() {
@@ -25,12 +24,15 @@ class SearchListViewModel with ChangeNotifier {
   }
 
   void getPhotos(String query) async {
-    _isLoading = true;
+    // _isLoading = true;
+    _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    _photos = await _repository.getPhotos(query);
-    _isLoading = false;
-    print('_photos : ${_photos.length}');
+    final photos = await _repository.getPhotos(query);
+    _state = state.copyWith(
+      photos: photos,
+      isLoading: false,
+    );
 
     notifyListeners();
   }
