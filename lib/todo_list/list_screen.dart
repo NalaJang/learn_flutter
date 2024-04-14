@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_fluuter_together/todo_list/create_screen.dart';
 
 class ListScreen extends StatelessWidget {
   const ListScreen({super.key});
@@ -11,14 +12,19 @@ class ListScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListTile(
+          const ListTile(
             title: Text('title1'),
             subtitle: Text('subtitle1'),
           )
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreateScreen()),
+          );
+        },
         child: const Icon(Icons.add),
       ),
     );
