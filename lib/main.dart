@@ -3,7 +3,8 @@ import 'package:learn_fluuter_together/240411/data/data_source/photo_data_source
 import 'package:learn_fluuter_together/240411/data/repository/photo_repo_impl.dart';
 import 'package:learn_fluuter_together/240411/presentation/search_list_screen.dart';
 import 'package:learn_fluuter_together/240411/presentation/search_list_view_model.dart';
-import 'package:learn_fluuter_together/gps_map_app.dart';
+import 'package:learn_fluuter_together/gps/gps_map_app.dart';
+import 'package:learn_fluuter_together/todo_list/list_screen.dart';
 import 'package:learn_fluuter_together/xylophone_app/xylophone_app.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             dataSource: PhotoDataSource(),
           ),
         ),
-        child: const GpsMapApp(),
+        child: const ListScreen(),
       ),
     );
   }
