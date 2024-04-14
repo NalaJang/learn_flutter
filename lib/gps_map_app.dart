@@ -15,12 +15,11 @@ class GpsMapAppState extends State<GpsMapApp> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
   CameraPosition? _initialCameraPosition;
+
+  int _polylineIdCounter = 0;
+  Set<Polyline> _polylines = {};
+  LatLng? _previousPosition;
 
   @override
   void initState() {
@@ -45,6 +44,22 @@ class GpsMapAppState extends State<GpsMapApp> {
     const locationSettings = LocationSettings();
     Geolocator.getPositionStream(locationSettings: locationSettings)
         .listen((Position position) {
+      _polylineIdCounter++;
+      final polylineId = PolylineId('$_polylineIdCounter');
+      Polyline polyline = Polyline(
+          polylineId: polylineId,
+          color: Colors.red,
+          width: 3,
+          // 이전 위치, 현재 위치를 리스트에 넣는다. 이 포인트들을 연결해서 polyline 을 만든다.
+          points: [
+            _previousPosition ?? _initialCameraPosition!.target,
+            LatLng(position.latitude, position.longitude),
+          ]);
+      setState(() {
+        _polylines.add(polyline);
+        _previousPosition = LatLng(position.latitude, position.longitude);
+      });
+
       _moveCamera(position);
     });
   }
@@ -62,6 +77,8 @@ class GpsMapAppState extends State<GpsMapApp> {
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
               },
+              // _polylines: 위치 정보를 쌓아서 보여주어야 한다.
+              polylines: _polylines,
             ),
     );
   }
