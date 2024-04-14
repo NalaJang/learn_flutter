@@ -29,6 +29,12 @@ class _ListScreenState extends State<ListScreen> {
 
                     setState(() {});
                   },
+                  onDelete: (todo) async {
+                    // Hive 메서드
+                    await todo.delete();
+
+                    setState(() {});
+                  },
                 ))
             .toList(),
       ),
