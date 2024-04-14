@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_fluuter_together/main.dart';
 import 'package:learn_fluuter_together/todo_list/model/todo.dart';
+import 'package:learn_fluuter_together/todo_list/presentation/components/todo_item.dart';
 import 'package:learn_fluuter_together/todo_list/presentation/create_screen.dart';
 
 class ListScreen extends StatefulWidget {
@@ -11,7 +12,6 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +20,15 @@ class _ListScreenState extends State<ListScreen> {
       ),
       body: ListView(
         children: todos.values
-            .map((todo) => ListTile(
-                  title: Text(todo.title),
-                  subtitle: Text('${todo.dateTime}'),
+            .map((e) => TodoItem(
+                  todo: e,
+                  onTap: (todo) async {
+                    todo.isDone = !todo.isDone;
+                    // Hive 메서드
+                    await todo.save();
+
+                    setState(() {});
+                  },
                 ))
             .toList(),
       ),
