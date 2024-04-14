@@ -27,11 +27,15 @@ class _ListScreenState extends State<ListScreen> {
             .toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          // 메모 작성 후 돌아올 때 await 를 걸어서 기다리게 해서
+          // DB 의 내용을 리스트에 갱신한다.
+          await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const CreateScreen()),
           );
+
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),
