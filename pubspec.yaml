@@ -77,6 +77,7 @@ flutter:
     - assets/images/
     - assets/images/star_bucks/
     - assets/xylophone_sounds/
+    - assets/xylophone_images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

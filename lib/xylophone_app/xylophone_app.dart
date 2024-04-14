@@ -12,8 +12,9 @@ class XylophoneApp extends StatefulWidget {
 class _XylophoneAppState extends State<XylophoneApp> {
   static Soundpool pool =
       Soundpool.fromOptions(options: SoundpoolOptions.kDefault);
+  int selectedImageIndex = -1;
   bool _isLoading = true;
-  final List<int> _soundIds = [];
+  List<int> _soundIds = [];
   List<double> heightPaddings = [10, 20, 32, 40, 46, 54, 60, 69];
   List<String> soundFileNames = [
     'do1',
@@ -37,17 +38,31 @@ class _XylophoneAppState extends State<XylophoneApp> {
     Colors.deepOrange,
   ];
 
+  Future<void> initSoundPool() async {
+    int soundId;
+    for (String fileName in soundFileNames) {
+      soundId = await rootBundle
+          .load('assets/xylophone_sounds/$fileName.wav')
+          .then((soundData) => pool.load(soundData));
+      _soundIds.add(soundId);
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    // initSoundPool();
+    initSoundPool();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    initSoundPool();
+    // initSoundPool();
   }
 
   @override
@@ -74,34 +89,27 @@ class _XylophoneAppState extends State<XylophoneApp> {
   }
 
   Widget gunban(String text, Color color, int soundId) {
+
     return GestureDetector(
       onTap: () {
+        print(soundId);
         pool.play(soundId);
+        setState(() {
+          selectedImageIndex = soundId;
+        });
       },
-      child: Container(
-        width: 50,
-        height: double.infinity,
-        color: color,
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(color: Colors.white),
-          ),
-        ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: selectedImageIndex == soundId
+            ? Image.asset(
+                'assets/xylophone_images/${soundFileNames[soundId - 1]}.png',
+                width: 100,
+              )
+            : Image.asset(
+                'assets/xylophone_images/${soundFileNames[0]}.png',
+                width: 100,
+              ),
       ),
     );
-  }
-
-  Future<void> initSoundPool() async {
-    for (String fileName in soundFileNames) {
-      int soundId = await rootBundle
-          .load('assets/xylophone_sounds/$fileName.wav')
-          .then((soundData) => pool.load(soundData));
-      _soundIds.add(soundId);
-
-      setState(() {
-        _isLoading = false;
-      });
-    }
   }
 }
