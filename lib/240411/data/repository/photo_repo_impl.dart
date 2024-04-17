@@ -1,7 +1,8 @@
-import 'package:learn_fluuter_together/240411/data/data_source/photo_data_source.dart';
-import 'package:learn_fluuter_together/240411/data/mapper/photo_mapper.dart';
-import 'package:learn_fluuter_together/240411/data/model/photo.dart';
-import 'package:learn_fluuter_together/240411/data/repository/photo_repository.dart';
+
+import 'package:learn_flutter_together/240411/data/data_source/photo_data_source.dart';
+import 'package:learn_flutter_together/240411/data/mapper/photo_mapper.dart';
+import 'package:learn_flutter_together/240411/domain/model/photo.dart';
+import 'package:learn_flutter_together/240411/domain/repository/photo_repository.dart';
 
 class PhotoRepositoryImpl implements PhotoRepository {
   final PhotoDataSource _dataSource;

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:learn_fluuter_together/240411/data/model/photo.dart';
+import 'package:learn_flutter_together/240411/domain/model/photo.dart';
 
 part 'search_list_state.freezed.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/main.dart';
-import 'package:learn_fluuter_together/todo_list/model/todo.dart';
+import 'package:learn_flutter_together/main.dart';
+import 'package:learn_flutter_together/todo_list/model/todo.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({super.key});

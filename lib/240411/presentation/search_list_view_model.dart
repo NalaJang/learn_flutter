@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:learn_fluuter_together/240411/data/model/photo.dart';
-import 'package:learn_fluuter_together/240411/data/repository/photo_repository.dart';
-import 'package:learn_fluuter_together/240411/presentation/search_list_state.dart';
+import 'package:learn_flutter_together/240411/domain/repository/photo_repository.dart';
+import 'package:learn_flutter_together/240411/presentation/search_list_state.dart';
 
 class SearchListViewModel with ChangeNotifier {
   final PhotoRepository _repository;

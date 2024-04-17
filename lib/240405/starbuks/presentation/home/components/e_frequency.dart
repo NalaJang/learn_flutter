@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/constants/texts.dart';
+import 'package:learn_flutter_together/constants/texts.dart';
 
 class EFrequency extends StatelessWidget {
   const EFrequency({super.key});

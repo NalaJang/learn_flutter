@@ -6,7 +6,7 @@
 
     <application
         android:usesCleartextTraffic="true"
-        android:label="learn_fluuter_together"
+        android:label="learn_flutter_together"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

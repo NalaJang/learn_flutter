@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/main.dart';
-import 'package:learn_fluuter_together/todo_list/model/todo.dart';
-import 'package:learn_fluuter_together/todo_list/presentation/components/todo_item.dart';
-import 'package:learn_fluuter_together/todo_list/presentation/create_screen.dart';
+import 'package:learn_flutter_together/main.dart';
+import 'package:learn_flutter_together/todo_list/presentation/components/todo_item.dart';
+import 'package:learn_flutter_together/todo_list/presentation/create_screen.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});

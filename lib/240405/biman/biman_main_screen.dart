@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240405/biman/biman_view_model.dart';
+import 'package:learn_flutter_together/240405/biman/biman_view_model.dart';
 
 class BimanMainScreen extends StatefulWidget {
   const BimanMainScreen({super.key});

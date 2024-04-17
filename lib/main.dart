@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:learn_fluuter_together/240411/data/data_source/photo_data_source.dart';
-import 'package:learn_fluuter_together/240411/data/repository/photo_repo_impl.dart';
-import 'package:learn_fluuter_together/240411/presentation/search_list_screen.dart';
-import 'package:learn_fluuter_together/240411/presentation/search_list_view_model.dart';
-import 'package:learn_fluuter_together/gps/gps_map_app.dart';
-import 'package:learn_fluuter_together/todo_list/model/todo.dart';
-import 'package:learn_fluuter_together/todo_list/presentation/list_screen.dart';
-import 'package:learn_fluuter_together/xylophone_app/xylophone_app.dart';
+import 'package:learn_flutter_together/240411/data/data_source/photo_data_source.dart';
+import 'package:learn_flutter_together/240411/data/repository/photo_repo_impl.dart';
+import 'package:learn_flutter_together/240411/presentation/search_list_screen.dart';
+import 'package:learn_flutter_together/240411/presentation/search_list_view_model.dart';
+import 'package:learn_flutter_together/todo_list/model/todo.dart';
 import 'package:provider/provider.dart';
 
 import '240403_layout/birthday_card.dart';
@@ -43,7 +40,7 @@ class MyApp extends StatelessWidget {
             dataSource: PhotoDataSource(),
           ),
         ),
-        child: const ListScreen(),
+        child: const SearchListScreen(),
       ),
     );
   }

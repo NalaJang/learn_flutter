@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_fluuter_together/240411/presentation/components/image_card_widget.dart';
-import 'package:learn_fluuter_together/240411/presentation/search_list_view_model.dart';
+import 'package:learn_flutter_together/240411/presentation/components/image_card_widget.dart';
+import 'package:learn_flutter_together/240411/presentation/search_list_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SearchListScreen extends StatefulWidget {
