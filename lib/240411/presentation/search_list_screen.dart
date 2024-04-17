@@ -27,34 +27,37 @@ class _SearchListScreenState extends State<SearchListScreen> {
   Widget build(BuildContext context) {
     final viewModel = context.watch<SearchListViewModel>();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('이미지 검색'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _getSearchedResult(viewModel),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('이미지 검색'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _getSearchedResult(viewModel),
 
-            const SizedBox(height: 10),
+              const SizedBox(height: 10),
 
-            _getTopFive(viewModel),
+              _getTopFive(viewModel),
 
-            const SizedBox(height: 10),
-            Expanded(
-              child: viewModel.state.isLoading
-                  ? const Center(child: CircularProgressIndicator())
-                  : GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      children: viewModel.state.photos
-                          .map((e) => ImageCardWidget(photo: e))
-                          .toList()),
-            ),
-          ],
+              const SizedBox(height: 10),
+              Expanded(
+                child: viewModel.state.isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : GridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        children: viewModel.state.photos
+                            .map((e) => ImageCardWidget(photo: e))
+                            .toList()),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -69,6 +72,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
           onPressed: () {
             final query = viewModel.textController.text;
             viewModel.getPhotos(query);
+            FocusManager.instance.primaryFocus?.unfocus();
           },
           icon: const Icon(Icons.search),
         ),
