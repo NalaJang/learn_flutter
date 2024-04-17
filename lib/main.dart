@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:learn_flutter_together/240411/data/data_source/photo_data_source.dart';
 import 'package:learn_flutter_together/240411/data/repository/photo_repo_impl.dart';
+import 'package:learn_flutter_together/240411/domain/repository/photo_repository.dart';
+import 'package:learn_flutter_together/240411/domain/use_case/get_searched_photos_use_case.dart';
 import 'package:learn_flutter_together/240411/presentation/search_list_screen.dart';
 import 'package:learn_flutter_together/240411/presentation/search_list_view_model.dart';
 import 'package:learn_flutter_together/todo_list/model/todo.dart';
@@ -36,8 +38,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: ChangeNotifierProvider(
         create: (_) => SearchListViewModel(
-          repository: PhotoRepositoryImpl(
-            dataSource: PhotoDataSource(),
+          getSearchedPhotosUseCase: GetSearchedPhotosUseCase(
+            PhotoRepositoryImpl(dataSource: PhotoDataSource()),
           ),
         ),
         child: const SearchListScreen(),

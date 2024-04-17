@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:learn_flutter_together/240411/domain/repository/photo_repository.dart';
+import 'package:learn_flutter_together/240411/domain/use_case/get_searched_photos_use_case.dart';
 import 'package:learn_flutter_together/240411/presentation/search_list_state.dart';
 
 class SearchListViewModel with ChangeNotifier {
-  final PhotoRepository _repository;
+  final GetSearchedPhotosUseCase _getSearchedPhotosUseCase;
   final _textController = TextEditingController();
 
   SearchListViewModel({
-    required PhotoRepository repository,
-  }) : _repository = repository;
-
+    required GetSearchedPhotosUseCase getSearchedPhotosUseCase,
+  }) : _getSearchedPhotosUseCase = getSearchedPhotosUseCase;
   get textController => _textController;
 
   SearchListState _state = const SearchListState();
@@ -27,7 +26,7 @@ class SearchListViewModel with ChangeNotifier {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    final photos = await _repository.getPhotos(query);
+    final photos = await _getSearchedPhotosUseCase.execute(query);
     _state = state.copyWith(
       photos: photos,
       isLoading: false,
