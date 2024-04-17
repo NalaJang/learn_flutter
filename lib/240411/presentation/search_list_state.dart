@@ -10,6 +10,7 @@ class SearchListState with _$SearchListState {
   const factory SearchListState({
     @Default([]) List<Photo> photos,
     @Default(false) bool isLoading,
+    @Default(false) bool isClicked,
   }) = _SearchListState;
 
   factory SearchListState.fromJson(Map<String, Object?> json) => _$SearchListStateFromJson(json);

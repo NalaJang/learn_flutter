@@ -22,6 +22,7 @@ SearchListState _$SearchListStateFromJson(Map<String, dynamic> json) {
 mixin _$SearchListState {
   List<Photo> get photos => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isClicked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $SearchListStateCopyWith<$Res> {
           SearchListState value, $Res Function(SearchListState) then) =
       _$SearchListStateCopyWithImpl<$Res, SearchListState>;
   @useResult
-  $Res call({List<Photo> photos, bool isLoading});
+  $Res call({List<Photo> photos, bool isLoading, bool isClicked});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$SearchListStateCopyWithImpl<$Res, $Val extends SearchListState>
   $Res call({
     Object? photos = null,
     Object? isLoading = null,
+    Object? isClicked = null,
   }) {
     return _then(_value.copyWith(
       photos: null == photos
@@ -62,6 +64,10 @@ class _$SearchListStateCopyWithImpl<$Res, $Val extends SearchListState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isClicked: null == isClicked
+          ? _value.isClicked
+          : isClicked // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -75,7 +81,7 @@ abstract class _$$SearchListStateImplCopyWith<$Res>
       __$$SearchListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Photo> photos, bool isLoading});
+  $Res call({List<Photo> photos, bool isLoading, bool isClicked});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$SearchListStateImplCopyWithImpl<$Res>
   $Res call({
     Object? photos = null,
     Object? isLoading = null,
+    Object? isClicked = null,
   }) {
     return _then(_$SearchListStateImpl(
       photos: null == photos
@@ -101,6 +108,10 @@ class __$$SearchListStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isClicked: null == isClicked
+          ? _value.isClicked
+          : isClicked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -109,7 +120,9 @@ class __$$SearchListStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SearchListStateImpl implements _SearchListState {
   const _$SearchListStateImpl(
-      {final List<Photo> photos = const [], this.isLoading = false})
+      {final List<Photo> photos = const [],
+      this.isLoading = false,
+      this.isClicked = false})
       : _photos = photos;
 
   factory _$SearchListStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -127,10 +140,13 @@ class _$SearchListStateImpl implements _SearchListState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isClicked;
 
   @override
   String toString() {
-    return 'SearchListState(photos: $photos, isLoading: $isLoading)';
+    return 'SearchListState(photos: $photos, isLoading: $isLoading, isClicked: $isClicked)';
   }
 
   @override
@@ -140,13 +156,15 @@ class _$SearchListStateImpl implements _SearchListState {
             other is _$SearchListStateImpl &&
             const DeepCollectionEquality().equals(other._photos, _photos) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.isClicked, isClicked) ||
+                other.isClicked == isClicked));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_photos), isLoading);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_photos), isLoading, isClicked);
 
   @JsonKey(ignore: true)
   @override
@@ -165,7 +183,9 @@ class _$SearchListStateImpl implements _SearchListState {
 
 abstract class _SearchListState implements SearchListState {
   const factory _SearchListState(
-      {final List<Photo> photos, final bool isLoading}) = _$SearchListStateImpl;
+      {final List<Photo> photos,
+      final bool isLoading,
+      final bool isClicked}) = _$SearchListStateImpl;
 
   factory _SearchListState.fromJson(Map<String, dynamic> json) =
       _$SearchListStateImpl.fromJson;
@@ -174,6 +194,8 @@ abstract class _SearchListState implements SearchListState {
   List<Photo> get photos;
   @override
   bool get isLoading;
+  @override
+  bool get isClicked;
   @override
   @JsonKey(ignore: true)
   _$$SearchListStateImplCopyWith<_$SearchListStateImpl> get copyWith =>

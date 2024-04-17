@@ -14,6 +14,7 @@ _$SearchListStateImpl _$$SearchListStateImplFromJson(
               .toList() ??
           const [],
       isLoading: json['isLoading'] as bool? ?? false,
+      isClicked: json['isClicked'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$SearchListStateImplToJson(
@@ -21,4 +22,5 @@ Map<String, dynamic> _$$SearchListStateImplToJson(
     <String, dynamic>{
       'photos': instance.photos,
       'isLoading': instance.isLoading,
+      'isClicked': instance.isClicked,
     };
