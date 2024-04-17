@@ -30,7 +30,7 @@ class SearchListViewModel with ChangeNotifier {
   }
 
   void getPhotos(String query) async {
-    _state = state.copyWith(isLoading: true);
+    _state = state.copyWith(isLoading: true, isClicked: false);
     notifyListeners();
 
     final photos = await _getSearchedPhotosUseCase.execute(query);
