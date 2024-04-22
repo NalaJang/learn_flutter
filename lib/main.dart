@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:learn_flutter_together/240411/core/router.dart';
 import 'package:learn_flutter_together/240411/data/data_source/photo_data_source.dart';
 import 'package:learn_flutter_together/240411/data/repository/photo_repo_impl.dart';
+import 'package:learn_flutter_together/240411/di/di_setup.dart';
 import 'package:learn_flutter_together/240411/domain/repository/photo_repository.dart';
 import 'package:learn_flutter_together/240411/domain/use_case/get_searched_photos_use_case.dart';
 import 'package:learn_flutter_together/240411/domain/use_case/get_top_five_most_viewed_images_use_case.dart';
@@ -27,6 +29,7 @@ void main() async {
   // todos(객체)를 통해서 DB 에 접근할 수 있다.
   todos = await Hive.openBox<Todo>('todolist.db');
 
+  diSetup();
   runApp(const MyApp());
 }
 
@@ -35,19 +38,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider(
-        create: (_) => SearchListViewModel(
-          getSearchedPhotosUseCase: GetSearchedPhotosUseCase(
-            PhotoRepositoryImpl(dataSource: PhotoDataSource()),
-          ),
-          getTopFiveMostViewedImagesUseCase: GetTopFiveMostViewedImagesUseCase(
-            PhotoRepositoryImpl(dataSource: PhotoDataSource()),
-          ),
-        ),
-        child: const SearchListScreen(),
-      ),
     );
   }
 }
